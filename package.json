@@ -1,0 +1,20 @@
+{
+  "name": "1111",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "1": "npx playwright test", 
+    "example": "npx playwright test /tests-examples/demo-todo-app.spec.js", 
+    "debug": "npx playwright test /tests-examples/demo-todo-app.spec.js --debug", 
+    "headed": "npx playwright test /tests-examples/demo-todo-app.spec.js --headed", 
+    "heroku": "npx playwright test /specs/login.spec.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.40.1",
+    "@types/node": "^20.10.5"
+  }
+}
