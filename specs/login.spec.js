@@ -10,19 +10,24 @@ test.describe(`Heroku Login Suite` , () => {
         loginPage = new LoginPage(page); 
         await loginPage.gotoLogin(); 
     })
+    
     test('should login successfully', async ({ page }) => {
         await loginPage.loginToPage(commonData.userName, commonData.password); 
-        expect(await page.locator('#flash').textContent()).toContain('You logged into a secure area!');
-        expect(await page.locator('[href="/logout"]').textContent()).toContain('Logout');
+        expect(await loginPage.flashMessage()).toContain('You logged into a secure area!');
+        expect(await loginPage.logoutMessage()).toContain('Logout');
     })
 
     test(`should throw an error when username is not valid`, async ({page}) => {
         await loginPage.loginToPage('34234', commonData.password); 
-        expect(await page.locator('#flash').textContent()).toContain('Your username is invalid!');
+        expect(await loginPage.flashMessage()).toContain('Your username is invalid!');
     })
 
     test(`should logout successfully`, async ({page}) => {
-
+        await loginPage.loginToPage(commonData.userName, commonData.password); 
+        expect(await loginPage.flashMessage()).toContain('You logged into a secure area!');
+        expect(await loginPage.logoutMessage()).toContain('Logout');
+        await loginPage.clickLogout();
+        expect(await loginPage.flashMessage()).toContain('You logged out of the secure area!');
     })
     
 })

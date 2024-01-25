@@ -7,7 +7,8 @@ export class LoginPage {
         this.username = this.page.getByLabel('Username'); 
         this.password = this.page.getByLabel('Password'); 
         this.submit = this.page.locator('[type="submit"]'); 
-        this.flashMessage = this.page.locator('#flash'); 
+        this.logout = this.page.locator('[href="/logout"]'); 
+        this.flash = this.page.locator('#flash'); 
     }
 
     async gotoLogin() {
@@ -18,5 +19,18 @@ export class LoginPage {
         await this.username.fill(user);
         await this.password.fill(pwd);
         await this.submit.click();
+    }
+
+    async flashMessage() {
+        return this.flash.textContent();
+    }
+
+    async logoutMessage(message) {
+        return this.logout.textContent();
+        //return expect(await this.logout.textContent()).toContain(`${message}`);
+    }
+
+    async clickLogout() {
+        this.logout.click(); 
     }
 }
