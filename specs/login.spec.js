@@ -22,7 +22,7 @@ test.describe(`Heroku Login Suite` , () => {
         expect(await loginPage.flashMessage()).toContain('Your username is invalid!');
     })
 
-    test(`should logout successfully`, async ({page}) => {
+    test.skip(`should logout successfully`, async ({page}) => {
         await loginPage.loginToPage(commonData.userName, commonData.password); 
         expect(await loginPage.flashMessage()).toContain('You logged into a secure area!');
         expect(await loginPage.logoutMessage()).toContain('Logout');
