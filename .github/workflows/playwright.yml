@@ -9,7 +9,8 @@ jobs:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout repository
+      uses: actions/checkout@v3
     - uses: actions/setup-node@v3
       with:
         node-version: 18
@@ -20,11 +21,13 @@ jobs:
     - name: Run Playwright tests
       run: npm run allTests
     - name: Generate Allure Report 
-      run: npm run allure 
-    - name: Publish Allure report to Github pages 
-      uses: actions/upload-artifact@v3
+      run: | 
+        npm i -g allure-commandline
+        npm run allure 
+    - name: Upload Allure Report  
+      uses: actions/upload-artifact@v2
       with: 
         name: allure-report 
-        path: allure-report/index.html
+        path: allure-report
 
     
