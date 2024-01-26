@@ -30,7 +30,7 @@ jobs:
       run: npm run allTests
 
     - name: Generate Allure Report 
-      run:  npx allure generate allure-results --clean && allure open 
+      run:  npx allure generate allure-results --clean && allure-report open 
 
     - name: Upload Allure Report  
       uses: actions/upload-artifact@v2
