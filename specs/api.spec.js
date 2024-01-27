@@ -16,7 +16,7 @@ test.describe('API Go Rest ', async () => {
 
     test('should retrieve all Users list', async ({ request }) => {
 
-        let getAllUsers = await request.get('https://gorest.co.in/public/v2/users4534', {
+        let getAllUsers = await request.get('https://gorest.co.in/public/v2/users4', {
             headers: headersVariables,
             params: paramsPayload()
         })
